@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Webcode</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+            padding: 0; /* Убираем отступы */
+            margin: 0; /* Убираем отступы */
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px; /* Уменьшен отступ сверху */
+            position: relative;
+            z-index: 2; /* Кнопки находятся выше остальных элементов */
+        }
+        .button {
+            background-color: black;
+            border: 2px solid #00ff00; /* Светло ядерно-салатовый цвет */
+            padding: 20px 40px;
+            font-size: 24px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00; /* Увеличенное свечение */
+            position: relative; /* Для размещения псевдоэлемента */
+            overflow: hidden; /* Обрезаем текст по краям кнопки */
+            font-family: 'Alfa Slab One', cursive; /* Подключенный шрифт */
+            transition: transform 0.3s, box-shadow 0.3s; /* Плавный переход */
+        }
+        .button span {
+            display: inline-block;
+            background-image: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red);
+            background-size: 400%; /* Увеличиваем размер для плавности анимации */
+            -webkit-background-clip: text; /* Для WebKit */
+            background-clip: text; /* Для остальных браузеров */
+            color: transparent; /* Делаем цвет текста прозрачным */
+            animation: rainbow 6s infinite linear; /* Добавляем анимацию */
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0%; }
+            50% { background-position: 100%; }
+            100% { background-position: 0%; }
+        }
+
+        .button:hover {
+            transform: scale(1.1); /* Увеличение при наведении */
+            box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00; /* Увеличенное свечение при наведении */
+        }
+        .button:active {
+            transform: scale(0.9); /* Уменьшение при нажатии */
+            box-shadow: 0 0 30px #00ff00, 0 0 50px #00ff00; /* Увеличенное свечение при нажатии */
+            transition: transform 0.1s, box-shadow 0.1s; /* Плавный переход */
+        }
+        .video-container {
+            margin-top: 20px; /* Отступ сверху для видео */
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Видео будет ниже кнопок */
+            display: flex;
+            justify-content: center; /* Центрируем контейнер */
+        }
+        .video-frame {
+            border: 5px solid #00ff00; /* Светло ядерно-салатовый цвет */
+            border-radius: 10px;
+            padding: 5px;
+            box-shadow: 0 0 30px #00ff00; /* Увеличенное свечение вокруг рамки */
+            position: relative;
+            width: 800px; /* Установите ширину рамки на ваше усмотрение */
+            height: 450px; /* Установите высоту рамки на ваше усмотрение */
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            border: none; /* Убираем рамку */
+            pointer-events: auto; /* Включаем взаимодействие с видео */
+        }
+        .sound-button {
+            margin-top: 10px; /* Отступ между кнопкой звука и видео */
+            padding: 10px 20px;
+            background-color: black;
+            border: 2px solid #00ff00;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00; /* Увеличенное свечение */
+            cursor: pointer; /* Указатель при наведении */
+            transition: transform 0.3s, box-shadow 0.3s; /* Плавный переход */
+        }
+        .sound-button:hover {
+            transform: scale(1.1); /* Увеличение при наведении */
+            box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00; /* Увеличенное свечение при наведении */
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="video-frame">
+            <video id="myVideo" autoplay loop> <!-- Авто воспроизведение, зацикливание -->
+                <source src="assets/web.mp4" type="video/mp4"> <!-- Укажите путь к вашему видеофайлу -->
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </div>
+
+    <button id="toggleSound" class="sound-button">Включить звук</button>
+
+    <div class="button-container">
+        <a href="https://t.me/+Jmv9N8vIEwYwM2Ri" class="button"><span>CYBER WEBCODE</span></a>
+        <a href="https://t.me/+pa5JX5qfB7Y4NmJi" class="button"><span>ПОСЛЕДНЕЕ СЕРДЦЕБИЕНИЕ</span></a>
+        <a href="https://t.me/Legend_Kills" class="button"><span>DEPARTAMENT</span></a>
+        <a href="https://t.me/webskan" class="button"><span>WEBCODE</span></a>
+    </div>
+
+    <script>
+        const video = document.getElementById('myVideo');
+        const toggleSoundButton = document.getElementById('toggleSound');
+        let isMuted = true;
+
+        toggleSoundButton.addEventListener('click', () => {
+            isMuted = !isMuted;
+            video.muted = isMuted;
+            toggleSoundButton.textContent = isMuted ? 'Включить звук' : 'Выключить звук';
+        });
+    </script>
+</body>
+</html>
